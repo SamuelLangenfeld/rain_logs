@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  latest_precip: MyString
+  last_update: 2017-05-10 15:30:56
+  user: one
+
+two:
+  latest_precip: MyString
+  last_update: 2017-05-10 15:30:56
+  user: two

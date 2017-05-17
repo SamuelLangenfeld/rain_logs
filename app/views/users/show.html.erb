@@ -1,0 +1,25 @@
+<div>
+  <h1><%=@user.email %>'s Project Sites</h1>
+</div>
+
+<div>
+<% @user.sites.each do |site| %>
+  <div>
+    <%= link_to site.name, site %>
+  </div>
+<% end %> 
+</div>
+
+<div>
+  <h1>
+    Add New Site
+  </h1>
+  <%= form_for Site.new do |f| %>
+    <%= f.label :name, :value=> "Enter a name for your project site" %>
+    <%= f.text_field :name %>
+    <%= f.label :address, "Enter an Address" %>
+    <%= f.text_field :address %>
+    <%= f.hidden_field :user_id, :value=>@user.id  %>
+    <%= f.submit "Submit new site" %>
+  <% end %>
+</div>
