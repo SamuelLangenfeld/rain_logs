@@ -16,7 +16,7 @@ class Site < ApplicationRecord
         precip+=feature["properties"]["precipitationLastHour"]["value"].to_f
       end
       precip=precip*39.3701
-      precip=precip.round(2)
+      precip=sprintf "%.2f", precip.round(2)
       self.latest_precip=precip.to_s
 
       precip=0.0
@@ -24,7 +24,7 @@ class Site < ApplicationRecord
         precip+=feature["properties"]["precipitationLastHour"]["value"].to_f
       end
       precip=precip*39.3701
-      precip=precip.round(2)
+      precip=sprintf "%.2f", precip.round(2)
       self.week_precip=precip.to_s
     else
       nil
