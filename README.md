@@ -8,7 +8,13 @@ It is online at [rain-logs.herokuapp.com](http://rain-logs.herokuapp.com).
 
 Once you've signed up you can create project sites to track by entering a name for the project and an address.
 
+![new project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain_logs_new_project.png?raw=true "new project screenshot")
+
+![unpopulated project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain-logs-site-unpopulated.png?raw=true "unpopulated project screenshot")
+
 On your project site's page you can click "Updata Precipitation Data" to get the information on your site's closest weather observation station, precipitation over the last 24 hours, and precipitation over the last week.
+
+![populated project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain-logs-site-populated.png?raw=true "populated project screensho")
 
 ## Known Issues
 
