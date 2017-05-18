@@ -1,24 +1,3 @@
-# README
+# Rain Logs
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This was a project that I made to show some API work. This app keeps track of the rainfall at your construction sites. It uses the Google Maps API to find the longitude and latitude of your address, then sends those coordinates to the National Weather Service API to get the rainfall from the last 24 Hours and from the last week.
