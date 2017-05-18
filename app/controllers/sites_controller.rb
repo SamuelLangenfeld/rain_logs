@@ -18,6 +18,7 @@ class SitesController < ApplicationController
       flash[:notice]= "Unfortunately the National Weather Service only monitors weather in the USA. Enter an American address."
       return
     end
+    @site.address= json_answer["results"][0]["formatted_address"]
     location= json_answer["results"][0]["geometry"]["location"]
     @site.latitude= location["lat"].to_s
     @site.longitude= location["lng"].to_s
