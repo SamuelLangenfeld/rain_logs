@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516201910) do
+ActiveRecord::Schema.define(version: 20170521215950) do
 
   create_table "sites", force: :cascade do |t|
     t.string   "latest_precip"
-    t.time     "last_update"
+    t.datetime "last_update"
     t.integer  "user_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

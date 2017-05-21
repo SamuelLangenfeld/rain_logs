@@ -35,6 +35,8 @@ gem 'json', '~>2.1.0'
 
 gem 'figaro', '1.1.1'
 
+gem 'bootstrap-sass', '~> 3.3.6'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

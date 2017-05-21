@@ -26,6 +26,7 @@ class Site < ApplicationRecord
       precip=precip*39.3701
       precip=sprintf "%.2f", precip.round(2)
       self.week_precip=precip.to_s
+      self.last_update=Time.zone.now
     else
       nil
     end
