@@ -6,6 +6,7 @@ class SitesController < ApplicationController
 
   def show
     @site=Site.find(params[:id])
+    @site.get_rain
   end
 
   def create
@@ -44,12 +45,6 @@ class SitesController < ApplicationController
       format.html { redirect_to user_url, notice: 'Site was successfully destroyed.' }
       format.json { head :no_content }
     end
-  end
-
-  def update_rain
-    @site=Site.find(params[:id])
-    @site.get_rain
-    redirect_to @site
   end
 
   private
