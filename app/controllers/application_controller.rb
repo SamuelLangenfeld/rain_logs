@@ -4,4 +4,5 @@ class ApplicationController < ActionController::Base
     user_path(User.first)
   end
 
+
 end

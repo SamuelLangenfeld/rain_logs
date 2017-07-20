@@ -1,57 +1,67 @@
-<div style="text-align: center">
-<div style="display:inline-block;text-align:left;">
-  <div>
-    <h1><%= @site.name %></h1>
-  </div>
-  <div>
-    <strong>Site Address</strong>
-  </div>
-  <div>
-    <%= @site.address %>
-  </div>
-  <div>
-    <strong>Site Coordinates</strong>
-  </div>
-  <div>
-    Latitude: <%= @site.latitude %>
-  </div>
-  <div>
-    Longitude: <%= @site.longitude %>
-  </div>
-
-  <div>
-    <strong>Weather Observation Station</strong>
-  </div>
-  <div>
-    <%= @site.station_id %>
-  </div>
-
-  <% if @site.latest_precip %>
+<div style="text-align: center" class="col-md-6">
+  <div style="display:inline-block;text-align:left;">
     <div>
-      <strong>Precipitation</strong>
+      <h1><%= @site.name %></h1>
     </div>
     <div>
-      Over Last 24 Hours: <%=@site.latest_precip %> inches.
+      <strong>Site Address</strong>
     </div>
     <div>
-      Over Last Week: <%=@site.week_precip %> inches.
+      <%= @site.address %>
     </div>
     <div>
-      Precipitation Data Updated At: <%= @site.last_update %>
+      <strong>Site Coordinates</strong>
     </div>
-  <% else %>
     <div>
-      You have not updated the precipitation data
+      Latitude: <%= @site.latitude %>
     </div>
-  <% end %>
+    <div>
+      Longitude: <%= @site.longitude %>
+    </div>
+
+    <div>
+      <strong>Weather Observation Station</strong>
+    </div>
+    <div>
+      <%= @site.station_id %>
+    </div>
+
+    <% if @site.latest_precip %>
+      <div>
+        <strong>Precipitation</strong>
+      </div>
+      <div>
+        Over Last 24 Hours: <%=@site.latest_precip %> inches.
+      </div>
+      <div>
+        Over Last Week: <%=@site.week_precip %> inches.
+      </div>
+      <div>
+        Precipitation Data Updated At: <%= @site.last_update %>
+      </div>
+    <% else %>
+      <div>
+        You have not updated the precipitation data
+      </div>
+    <% end %>
 
 
-  <div>
-    <%= link_to "Back to your page", user_path %>
-  </div>
+    <div>
+      <%= link_to "Back to your page", user_path %>
+    </div>
 
-  <div>
-  <%= link_to "Delete site", site_path(@site), method: :delete %>
+    <div>
+    <%= link_to "Delete site", site_path(@site), method: :delete %>
+    </div>
   </div>
 </div>
+
+<div class="col-md-6">
+  <iframe
+    width="500"
+    height="400"
+    frameborder="0" style="border:0"
+    src=<%= "https://www.google.com/maps/embed/v1/place?key=" + ENV["google_api_key"] + "&q=#{format_address_for_google_query(@site.address)}"  %>
+    allowfullscreen
+  </iframe>
 </div>
