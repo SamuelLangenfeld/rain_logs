@@ -10,9 +10,9 @@ Once you've signed up you can create project sites to track by entering a name f
 
 ![new project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain-logs-new-project.png?raw=true "new project screenshot")
 
-![unpopulated project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain-logs-site.png?raw=true "site screenshot")
-
 On your project site's page you will find the information on your site's closest weather observation station, precipitation over the last 24 hours, and precipitation over the last week. It automatically updates every time you visit the page.
+
+![unpopulated project screenshot](https://github.com/SamuelLangenfeld/rain_logs/blob/master/app/assets/images/rain-logs-site.png?raw=true "site screenshot")
 
 
 ## Known Issues
