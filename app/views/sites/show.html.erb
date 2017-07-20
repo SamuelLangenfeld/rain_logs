@@ -1,52 +1,57 @@
-<div>
-  <h1><%= @site.name %></h1>
-</div>
-<div>
-  <strong>Site Address</strong>
-</div>
-<div>
-  <%= @site.address %>
-</div>
-<div>
-  <strong>Site Coordinates</strong>
-</div>
-<div>
-  Latitude: <%= @site.latitude %>
-</div>
-<div>
-  Longitude: <%= @site.longitude %>
-</div>
+<div style="text-align: center">
+<div style="display:inline-block;text-align:left;">
+  <div>
+    <h1><%= @site.name %></h1>
+  </div>
+  <div>
+    <strong>Site Address</strong>
+  </div>
+  <div>
+    <%= @site.address %>
+  </div>
+  <div>
+    <strong>Site Coordinates</strong>
+  </div>
+  <div>
+    Latitude: <%= @site.latitude %>
+  </div>
+  <div>
+    Longitude: <%= @site.longitude %>
+  </div>
 
-<div>
-  <strong>Weather Observation Station</strong>
-</div>
-<div>
-  <%= @site.station_id %>
-</div>
+  <div>
+    <strong>Weather Observation Station</strong>
+  </div>
+  <div>
+    <%= @site.station_id %>
+  </div>
 
-<% if @site.latest_precip %>
-  <div>
-    <strong>Precipitation</strong>
-  </div>
-  <div>
-    Over Last 24 Hours: <%=@site.latest_precip %> inches.
-  </div>
-  <div>
-    Over Last Week: <%=@site.week_precip %> inches.
-  </div>
-  <div>
-    Precipitation Data Updated At: <%= @site.last_update %>
-  </div>
-<% else %>
-  <div>
-    You have not updated the precipitation data
-  </div>
-<% end %>
+  <% if @site.latest_precip %>
+    <div>
+      <strong>Precipitation</strong>
+    </div>
+    <div>
+      Over Last 24 Hours: <%=@site.latest_precip %> inches.
+    </div>
+    <div>
+      Over Last Week: <%=@site.week_precip %> inches.
+    </div>
+    <div>
+      Precipitation Data Updated At: <%= @site.last_update %>
+    </div>
+  <% else %>
+    <div>
+      You have not updated the precipitation data
+    </div>
+  <% end %>
 
-<div>
-  <%= link_to "Back to your page", user_path %>
+
+  <div>
+    <%= link_to "Back to your page", user_path %>
+  </div>
+
+  <div>
+  <%= link_to "Delete site", site_path(@site), method: :delete %>
+  </div>
 </div>
-
-<div>
-<%= link_to "Delete site", site_path(@site), method: :delete %>
 </div>
