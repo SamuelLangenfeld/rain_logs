@@ -24,6 +24,11 @@ class SitesController < ApplicationController
     @site.latitude= location["lat"].to_s
     @site.longitude= location["lng"].to_s
 
+    weather_url="https://api.weather.gov/points/"+@site.latitude+","+@site.longitude+"/stations"
+    feedback = RestClient.get(weather_url)
+    json_answer=JSON.parse(feedback)
+    @site.station_id=json_answer["features"][0]["properties"]["stationIdentifier"]
+
     respond_to do |format|
       if @site.save
         format.html { redirect_to @site.user, notice: 'Site was successfully created.' }
