@@ -1,31 +1,35 @@
-<div>
-  <h1><%=@user.email %>'s Project Sites</h1>
-</div>
+<div style="text-align:center">
+  <div style="display:inline-block;text-align: left">
+    <div>
+      <h1><%=@user.email %>'s Project Sites</h1>
+    </div>
 
-<div>
-<% @user.sites.each do |site| %>
-  <div>
-    <%= link_to site.name, site %>
+    <div>
+    <% @user.sites.each do |site| %>
+      <div>
+        <%= link_to site.name, site %>
+      </div>
+    <% end %> 
+    </div>
+
+    <div>
+      <h2>Add New Site</h2>
+      <%= form_for Site.new, :html=>{:class=>"form-horizontal"} do |f| %>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.label :name, :value=>"Name" %>
+            <%= f.text_field :name %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= f.label :address, "Address" %>
+            <%= f.text_field :address %>
+          </div>
+        </div>
+        <%= f.hidden_field :user_id, :value=>@user.id  %>
+        <%= f.submit "Submit new site" %>
+      <% end %>
+    </div>
   </div>
-<% end %> 
-</div>
-
-<div>
-  <h2>Add New Site</h2>
-  <%= form_for Site.new, :html=>{:class=>"form-horizontal"} do |f| %>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.label :name, :value=>"Name" %>
-        <%= f.text_field :name %>
-      </div>
-    </div>
-    <div class="form-group">
-      <div class="col-sm-12">
-        <%= f.label :address, "Address" %>
-        <%= f.text_field :address %>
-      </div>
-    </div>
-    <%= f.hidden_field :user_id, :value=>@user.id  %>
-    <%= f.submit "Submit new site" %>
-  <% end %>
 </div>
