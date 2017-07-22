@@ -17,7 +17,7 @@ On your project site's page you will find the information on your site's closest
 
 ## Known Issues
 
-This data is not 100% accurate.
+The data is not 100% accurate.
 
 The application gets data from the national weather service and parses it, looking for the "precipitaitonLastHour" value. Almost all observation stations give this value, but I have seen some that do not. In that case the precipitation data for your project site will not be updated or entered.
 
