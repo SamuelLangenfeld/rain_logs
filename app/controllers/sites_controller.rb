@@ -11,23 +11,16 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
-    base_google_url="https://maps.googleapis.com/maps/api/geocode/json?"
-    headers={params: {address: "#{@site.address}", key: ENV["google_api_key"] }}
-    feedback = RestClient.get(base_google_url, headers)
-    json_answer=JSON.parse(feedback)
-    unless json_answer["results"][0]["formatted_address"].include? "USA"
-      flash[:notice]= "Unfortunately the National Weather Service only monitors weather in the USA. Enter an American address."
+    google_location_info=GoogleAPICaller.new.get_location_info(@site.address)
+    if google_location_info[:error]
+      flash[:notice]= google_location_info[:error]
       return
     end
-    @site.address= json_answer["results"][0]["formatted_address"]
-    location= json_answer["results"][0]["geometry"]["location"]
-    @site.latitude= location["lat"].to_s
-    @site.longitude= location["lng"].to_s
-
-    weather_url="https://api.weather.gov/points/"+@site.latitude+","+@site.longitude+"/stations"
-    feedback = RestClient.get(weather_url)
-    json_answer=JSON.parse(feedback)
-    @site.station_id=json_answer["features"][0]["properties"]["stationIdentifier"]
+    puts google_location_info.to_s
+    @site.address= google_location_info[:address]
+    @site.latitude= google_location_info[:latitude]
+    @site.longitude= google_location_info[:longitude]
+    @site.station_id= NWSAPICaller.new.get_station_id(@site.latitude, @site.longitude)
 
     respond_to do |format|
       if @site.save
