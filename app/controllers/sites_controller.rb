@@ -11,16 +11,7 @@ class SitesController < ApplicationController
 
   def create
     @site = Site.new(site_params)
-    google_location_info=GoogleAPICaller.new.get_location_info(@site.address)
-    if google_location_info[:error]
-      flash[:notice]= google_location_info[:error]
-      return
-    end
-    puts google_location_info.to_s
-    @site.address= google_location_info[:address]
-    @site.latitude= google_location_info[:latitude]
-    @site.longitude= google_location_info[:longitude]
-    @site.station_id= NWSAPICaller.new.get_station_id(@site.latitude, @site.longitude)
+    @site.get_site_attributes
 
     respond_to do |format|
       if @site.save
