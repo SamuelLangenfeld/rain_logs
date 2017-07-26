@@ -8,6 +8,8 @@ class NWSAPICaller < ApplicationRecord
     format_precip_data(extract_precip_data(query_weather(station_id)))
   end
 
+  
+
   private
 
   def weather_url(latitude, longitude)

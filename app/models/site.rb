@@ -10,8 +10,13 @@ class Site < ApplicationRecord
 
   def get_site_attributes
     google_location_info=GoogleAPICaller.new.get_location_info(self.address)
-    if google_location_info[:error]
-      return false
+    begin
+      if google_location_info[:error]
+        raise StandardError.new("Unfortunately the National Weather Service only monitors weather in the USA. Enter an American address.")
+      end
+    #rescue StandardError =>e
+     # puts e.message
+      #return
     end
     self.address= google_location_info[:address]
     self.latitude= google_location_info[:latitude]
