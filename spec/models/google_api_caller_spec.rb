@@ -43,4 +43,4 @@ RSpec.describe GoogleAPICaller, type: :model do
 
 
   end
-end   
+end

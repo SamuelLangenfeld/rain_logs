@@ -1,5 +1,6 @@
 class Site < ApplicationRecord
   belongs_to :user
+  attr_accessor :user
   validates :user, presence: true
 
   def get_rain
@@ -12,11 +13,8 @@ class Site < ApplicationRecord
     google_location_info=GoogleAPICaller.new.get_location_info(self.address)
     begin
       if google_location_info[:error]
-        raise StandardError.new("Unfortunately the National Weather Service only monitors weather in the USA. Enter an American address.")
+        raise StandardError.new(google_location_info[:error])
       end
-    #rescue StandardError =>e
-     # puts e.message
-      #return
     end
     self.address= google_location_info[:address]
     self.latitude= google_location_info[:latitude]
