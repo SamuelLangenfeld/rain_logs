@@ -27,7 +27,7 @@ class Site < ApplicationRecord
 
   def update_site_precip_data(precip)
     self.week_precip=precip[:week_precip]
-    self.latest_precip=precip[:day_precip]
+    self.day_precip=precip[:day_precip]
     self.last_update=Time.zone.now
     self.save
   end

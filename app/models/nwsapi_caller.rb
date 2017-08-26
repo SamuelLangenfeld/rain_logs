@@ -29,7 +29,7 @@ class NWSAPICaller < ApplicationRecord
   end
 
   def query_weather(station_id)
-    JSON.parse(RestClient.get(station_url(station_id)))
+    response=JSON.parse(RestClient.get(station_url(station_id)))
   end
 
   def extract_precip_data(raw_data)
