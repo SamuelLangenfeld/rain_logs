@@ -10,30 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170722134239) do
-
-  create_table "google_api_callers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "nwsapi_callers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 20170510193056) do
 
   create_table "sites", force: :cascade do |t|
-    t.string   "latest_precip"
+    t.string   "day_precip"
+    t.string   "week_precip"
     t.integer  "user_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.string   "address"
     t.string   "station_id"
     t.string   "name"
     t.string   "latitude"
     t.string   "longitude"
-    t.string   "week_precip"
-    t.datetime "last_update"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.index ["user_id"], name: "index_sites_on_user_id"
   end
 

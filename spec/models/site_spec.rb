@@ -57,7 +57,7 @@ RSpec.describe Site, :type => :model  do
 
     it "gets a value for the site's daily rainfall" do
       new_site=make_site
-      expect(new_site.latest_precip).to be_truthy
+      expect(new_site.day_precip).to be_truthy
     end
 
     it "gets a value for the site's weekly rainfall" do

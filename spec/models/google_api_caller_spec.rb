@@ -8,7 +8,7 @@ RSpec.describe GoogleAPICaller, type: :model do
 
     context "if given a valid place" do
 
-      googleResponse= GoogleAPICaller.new.get_location_info("the white house")
+      googleResponse= GoogleAPICaller.get_location_info("the white house")
 
       it "returns a hash with values for longitude, latitude, and address" do
         expect(googleResponse).to be_instance_of(Hash)
@@ -33,7 +33,7 @@ RSpec.describe GoogleAPICaller, type: :model do
     
 
     context "if given location outside of the United States" do
-      googleResponse= GoogleAPICaller.new.get_location_info("Eiffel Tower")
+      googleResponse= GoogleAPICaller.get_location_info("Eiffel Tower")
     
 
       it "returns an error key/value pair in the hash" do
