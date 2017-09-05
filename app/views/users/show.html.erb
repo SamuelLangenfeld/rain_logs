@@ -1,17 +1,13 @@
-<div style="text-align:center">
-  <div style="display:inline-block;text-align: left">
+  <div class="col-md-4">
     <div>
-      <h1><%=@user.email %>'s Project Sites</h1>
+      <strong>Precipitation Data Last Update:</strong>
+      <p><%= @user.precipitation_updated_at.localtime%></p>
     </div>
-
     <div>
-    <% @user.sites.each do |site| %>
-      <div>
-        <%= link_to site.name, site %>
-      </div>
-    <% end %> 
+      <h2>Update Sites</h2>
+      <p>If it's been more than 24 hours since the last time your precipitation data was updated, your project sites will have their precipitation data updated automatically. If you wish to update the data now, click the button.</p>
+      <%= button_to "Update Your Sites", immediate_update_users_url %>
     </div>
-
     <div>
       <h2>Add New Site</h2>
       <%= form_for Site.new, :html=>{:class=>"form-horizontal"} do |f| %>
@@ -32,4 +28,18 @@
       <% end %>
     </div>
   </div>
-</div>
+  <div class="col-md-4">
+    <div>
+      <h1><%=@user.name %>'s Project Sites</h1>
+    </div>
+
+    <div>
+    <% @user.sites.each do |site| %>
+      <div>
+        <%= link_to site.name, site %>
+      </div>
+    <% end %> 
+    </div>
+
+    
+  </div>

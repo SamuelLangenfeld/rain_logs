@@ -6,12 +6,13 @@ class SitesController < ApplicationController
 
   def show
     @site=Site.find(params[:id])
-    @site.get_rain
   end
 
   def create
     @site = Site.new(site_params)
     @site.get_site_attributes
+    @site.user= current_user
+    @site.get_rain
 
     respond_to do |format|
       if @site.save
@@ -19,6 +20,9 @@ class SitesController < ApplicationController
         format.json { render :show, status: :created, location: @site }
       else
         format.html { redirect_to User.find(@site.user_id) }
+        @site.errors.each do |error|
+          puts error.to_s
+        end
         format.json { render json: @site.errors, status: :unprocessable_entity }
       end
     end
@@ -38,6 +42,6 @@ class SitesController < ApplicationController
 
   private
     def site_params
-      params.require(:site).permit(:user_id, :name, :geo_location, :address, :latest_precip, :station)
+      params.require(:site).permit(:user_id, :name, :latitude, :longitude, :address, :station_id)
     end
 end

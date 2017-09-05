@@ -1,6 +1,5 @@
 class Site < ApplicationRecord
   belongs_to :user
-  attr_accessor :user
   validates :user, presence: true
 
   def get_rain
@@ -28,7 +27,11 @@ class Site < ApplicationRecord
   def update_site_precip_data(precip)
     self.week_precip=precip[:week_precip]
     self.day_precip=precip[:day_precip]
-    self.save
+    unless self.save
+      self.errors.each do |error|
+        puts error
+      end
+    end
   end
 
 end

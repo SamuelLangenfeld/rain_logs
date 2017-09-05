@@ -1,0 +1,8 @@
+
+
+2. Add navbar links at top
+
+3. Set up basic views for navbar links-
+employees, sites
+
+4. Configure users, controller route. Check out devise documentation. Check out what you did for book club.

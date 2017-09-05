@@ -26,18 +26,18 @@
       <%= @site.station_id %>
     </div>
 
-    <% if @site.latest_precip %>
+    <% if @site.day_precip %>
       <div>
         <strong>Precipitation</strong>
       </div>
       <div>
-        Over Last 24 Hours: <%=@site.latest_precip %> inches.
+        Over Last 24 Hours: <%=@site.day_precip %> inches.
       </div>
       <div>
         Over Last Week: <%=@site.week_precip %> inches.
       </div>
       <div>
-        Precipitation Data Updated At: <%= @site.last_update %>
+        Precipitation Data Updated At: <%= @site.updated_at.localtime %>
       </div>
     <% else %>
       <div>
